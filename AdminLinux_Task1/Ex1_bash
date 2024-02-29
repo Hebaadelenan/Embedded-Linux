@@ -1,0 +1,10 @@
+#!/bin/bash
+cd /home
+sudo mkdir myDirectory
+cd myDirectory
+sudo mkdir secondDirectory
+cd secondDirectory
+sudo touch myNotePaper
+sudo cp myNotePaper /home/myDirectory/myNotePaper
+cd ..
+sudo mv myNotePaper myOldNotePaper
