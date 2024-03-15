@@ -1,4 +1,6 @@
 #!/bin/bash
 if [-f ~/.bashrc]; then
-
-heba
+echo "export HELLO=$HOSTNAME" >> ~/.bashrc
+echo "LOCAL=$(whoami)" >> ~/.bashrc
+x-terminal-emulator
+fi
