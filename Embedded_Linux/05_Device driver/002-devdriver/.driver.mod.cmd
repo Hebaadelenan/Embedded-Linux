@@ -1,1 +1,0 @@
-savedcmd_/home/heba/device_driver/002-devdriver/driver.mod := printf '%s\n'   driver.o | awk '!x[$$0]++ { print("/home/heba/device_driver/002-devdriver/"$$0) }' > /home/heba/device_driver/002-devdriver/driver.mod
