@@ -1,47 +1,82 @@
-# Linux Command Line README
+## Q1- Create a folder called myteam in your home directory and change its permissions to read only for the owner. 
 
 ```bash
-# Q1
 mkdir myteam
 chmod u-wx myteam
+```
 
-# Q2-4
-cd myteam
-# Output: bash: cd: myteam: Permission denied
+## Q2- Log out and log in by another user 
 
-# Change permissions of oldpasswd file
+## Q3- Try to access (by cd command) the folder (myteam) 
+
+> Since the owner cannot execute then it will not work
+
+```bash
+bash: cd: myteam: Permission denied
+```
+## Q4- Using the command Line 
+
+### a. Change the permissions of oldpasswd file to give owner read and write permissions and for group write and execute and execute only for the others (using chmod in 2 different ways)  
+
+```bash
 chmod u=rw,g=wx,o=x /etc/passwd
 chmod 631 /etc/passwd
+```
 
-# Change default permissions
+### b. Change your default permissions to be as above.
+> We can use the **umask** value to change the default permissions. umask just subtract from 777 UGO
+
+```bash
 umask 146
+```
 
-# Maximum permissions for files and directories
-# File: rw- rw- r--, Directory: rwx rwx r-x
+### c. What is the maximum permission a file can have, by default when it is just created? And what is that for directory.  
 
-# Change default permissions to no permission for everyone
+>For **files** the max is rw- rw- r--
+
+>For **directories** the max is rwx rwx r-x
+
+
+### d. Change your default permissions to be no permission to everyone then create a directory and a file to verify. 
+
+```bash
 umask 777
+```
 
-# Proof that root can access any file/directory without restrictions
+### e. State who can access a this file if any with proof. 
 
-# Q5
-# Create a file with permission 444, try to edit/remove it
-# Outcome: File is read-only for UGO
+> The root can access any file/directory in the system without any restrictions
 
-# Q6
-# File execute permission allows commands like cat, more, less
-# Directory execute permission allows commands like cd, ls
 
-# Q7
-# - Create a new directory
-# - Set sticky bit and setgui bit
-# - Create multiple user accounts
-# - Allow users to create files, attempt deletion/rename of each other's files
-# - Demonstrate sticky bit impact on file deletion and renaming
-# - Provide directory output
+## Q5- Create a file with permission 444. Try to edit in it and to remove it? Note what happened.
 
-# Q8
-# List permissions of passwd command, explain the S
+> 444 means read-only for UGO 
+
+
+
+## Q6- What is the difference between the “x” permission for a file and for a directory?  
+
+### File
+> Execute permission for files allow you to use commands such as *cat*, *more*, *less* etc...
+
+### Directory
+> Execute permission for directories allows you to use commands such as *cd*, *ls*, etc...
+
+## Q7- Create a new directory. 
+1st. Set the sticky bit on the newly created directory. 
+2nd. set the setgui bit on the created directory 
+3rd. Create multiple user accounts. 
+4th. Allow these users to create files within the directory and directory. 
+5th. Attempt to delete or rename each other's files. 
+6th. Provide a clear output demonstrating the impact of the sticky bit on file 
+deletion and renaming within the directory. 
+7th. Provide a clear output for the directory created. 
+
+
+## Q8- List the permission passwd command has and explain why it has S 
+
+```bash
 ll /bin/passwd
-# Output: -rwsr-xr-x
-# Explanation: passwd has setuid permission allowing users to change their password easily
+-rwsr-xr-x 
+```
+> it has the setuid to make any user execute this command as the owner. Providing them to change their password easly
