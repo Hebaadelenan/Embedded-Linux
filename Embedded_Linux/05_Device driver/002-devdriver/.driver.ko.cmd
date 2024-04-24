@@ -1,0 +1,1 @@
+savedcmd_/home/heba/device_driver/002-devdriver/driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/heba/device_driver/002-devdriver/driver.ko /home/heba/device_driver/002-devdriver/driver.o /home/heba/device_driver/002-devdriver/driver.mod.o;  make -f ./arch/x86/Makefile.postlink /home/heba/device_driver/002-devdriver/driver.ko

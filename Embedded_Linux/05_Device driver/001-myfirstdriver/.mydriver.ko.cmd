@@ -1,0 +1,1 @@
+savedcmd_/home/heba/001-myfirstdriver/mydriver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/heba/001-myfirstdriver/mydriver.ko /home/heba/001-myfirstdriver/mydriver.o /home/heba/001-myfirstdriver/mydriver.mod.o;  make -f ./arch/x86/Makefile.postlink /home/heba/001-myfirstdriver/mydriver.ko
