@@ -63,14 +63,14 @@ umask 777
 > Execute permission for directories allows you to use commands such as *cd*, *ls*, etc...
 
 ## Q7- Create a new directory. 
-1st. Set the sticky bit on the newly created directory. 
-2nd. set the setgui bit on the created directory 
-3rd. Create multiple user accounts. 
-4th. Allow these users to create files within the directory and directory. 
-5th. Attempt to delete or rename each other's files. 
-6th. Provide a clear output demonstrating the impact of the sticky bit on file 
+1. Set the sticky bit on the newly created directory. 
+2. set the setgui bit on the created directory 
+3. Create multiple user accounts. 
+4. Allow these users to create files within the directory and directory. 
+5. Attempt to delete or rename each other's files. 
+6. Provide a clear output demonstrating the impact of the sticky bit on file 
 deletion and renaming within the directory. 
-7th. Provide a clear output for the directory created. 
+7. Provide a clear output for the directory created. 
 
 
 ## Q8- List the permission passwd command has and explain why it has S 
