@@ -15,7 +15,7 @@ MODULE_DESCRIPTION("Your module description");
 
 static int read_flag = 0;
 char buff[BUFF_SIZE];
-loff_t *g_offset;
+unsigned g_offset =0;
 int perm = RDWR;
 
 struct cdev mycdev ;
@@ -64,9 +64,9 @@ ssize_t mydriver_read(struct file *my_file, char __user *u, size_t s, loff_t *of
     
     printk("read\n");
     if (read_flag == 0) {
-        copy_to_user(u, buff , BUFF_SIZE);
+        copy_to_user(u, buff, BUFF_SIZE);
         read_flag = 1; // Set flag to indicate read has occurred
-        return 8; // Return the number of bytes written
+        return BUFF_SIZE; // Return the number of bytes written
     }
 	read_flag = 0; // Set flag to indicate read has occurred
     return 0; // Return 0 to indicate end-of-file
@@ -76,17 +76,17 @@ ssize_t mydriver_write(struct file *f, const char __user *u, size_t s, loff_t *o
 {
 	printk("write\n");
     if (f->f_flags & O_APPEND) {
-        *off = *g_offset; // Set offset to the end of the device buffer
+        *off = g_offset; // Set offset to the end of the device buffer
     }
     else    // clear the device buffer (important for rewriting)
     {
         memset(buff, 0, BUFF_SIZE); // Clear the device buffer
     }
 
-    copy_from_user(buff+(*off), u, s);
+    copy_from_user(buff +(* off), u, s);
 
     *off += s;                      // Update the offset
-    *g_offset = *off;                  // Update the global offset
+    g_offset = *off;                  // Update the global offset
 
 	return s;
 }
