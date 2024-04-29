@@ -1,6 +1,6 @@
 obj-m=driver.o
 
-BDR=/lib/modules/6.5.0-26-generic/build
+BDR=/lib/modules/6.5.0-28-generic/build
 
 
 all:
